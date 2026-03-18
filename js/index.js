@@ -4501,7 +4501,7 @@ function renderPlaylist() {
     const playlistHtml = state.playlistSongs.map((song, index) => {
         const artistValue = Array.isArray(song.artist)
             ? song.artist.join(", ")
-            : (song.artist || "未知艺术家");
+            : (song.artist || "Unknown artist");
         const songKey = getSongKey(song) || `playlist-${index}`;
         return `
         <div class="playlist-item" data-index="${index}" role="button" tabindex="0" aria-label="播放 ${song.name}" data-favorite-key="${songKey}">
@@ -4763,19 +4763,19 @@ function renderFavorites() {
     const favoritesHtml = favorites.map((song, index) => {
         const artistValue = Array.isArray(song.artist)
             ? song.artist.join(", ")
-            : (song.artist || "未知艺术家");
+            : (song.artist || "Unknown artist");
         const isCurrent = state.currentList === "favorite" && index === state.currentFavoriteIndex;
         const songKey = getSongKey(song) || `favorite-${index}`;
         return `
-        <div class="playlist-item${isCurrent ? " current" : ""}" data-index="${index}" role="button" tabindex="0" aria-label="播放 ${song.name}" data-favorite-key="${songKey}">
+        <div class="playlist-item${isCurrent ? " current" : ""}" data-index="${index}" role="button" tabindex="0" aria-label="Play ${song.name}" data-favorite-key="${songKey}">
             ${song.name} - ${artistValue}
-            <button class="favorite-item-action favorite-item-action--add" type="button" data-favorite-action="add" data-index="${index}" title="添加到播放列表" aria-label="添加到播放列表">
+            <button class="favorite-item-action favorite-item-action--add" type="button" data-favorite-action="add" data-index="${index}" title="Add to playlist" aria-label="Add to playlist">
                 <i class="fas fa-plus"></i>
             </button>
-            <button class="favorite-item-action favorite-item-action--download" type="button" data-favorite-action="download" data-index="${index}" title="下载" aria-label="下载">
+            <button class="favorite-item-action favorite-item-action--download" type="button" data-favorite-action="download" data-index="${index}" title="Download" aria-label="Download">
                 <i class="fas fa-download"></i>
             </button>
-            <button class="favorite-item-action favorite-item-action--remove" type="button" data-favorite-action="remove" data-index="${index}" title="从收藏列表移除" aria-label="从收藏列表移除">
+            <button class="favorite-item-action favorite-item-action--remove" type="button" data-favorite-action="remove" data-index="${index}" title="Removed from the Favorites list" aria-label="Removed from the Favorites list">
                 <i class="fas fa-trash"></i>
             </button>
         </div>`;
@@ -5930,7 +5930,7 @@ async function downloadSong(song, quality = "320") {
         }
     } catch (error) {
         console.error("Download failed:", error);
-        showNotification("Download failed, please try again later", "error");
+        showNotification("Select a song to start playing", "error");
     }
 }
 
