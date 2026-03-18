@@ -2100,7 +2100,7 @@ function handleSearchInputFocus() {
             try {
                 dom.searchInput.select();
             } catch (error) {
-                console.warn("选择搜索文本失败", error);
+                console.warn("Selecting Search Text failed", error);
             }
         });
     }
@@ -3578,7 +3578,7 @@ async function performSearch(isLiveSearch = false) {
     try {
         // 禁用搜索按钮并显示加载状态
         dom.searchBtn.disabled = true;
-        dom.searchBtn.innerHTML = '<span class="loader"></span><span>搜索中...</span>';
+        dom.searchBtn.innerHTML = '<span class="loader"></span><span>Searching...</span>';
 
         // 立即显示搜索模式
         showSearchResults();
