@@ -4352,7 +4352,7 @@ function updatePlaylistActionStates() {
 
 function exportPlaylist() {
     if (!Array.isArray(state.playlistSongs) || state.playlistSongs.length === 0) {
-        showNotification("播放列表为空，无法导出", "warning");
+        showNotification("The playlist is empty and cannot be exported", "warning");
         return;
     }
 
@@ -4378,10 +4378,10 @@ function exportPlaylist() {
         anchor.click();
         document.body.removeChild(anchor);
         URL.revokeObjectURL(url);
-        showNotification(`已导出 ${state.playlistSongs.length} 首歌曲`, "success");
+        showNotification(`Exported ${state.playlistSongs.length} song playlist`, "success");
     } catch (error) {
-        console.error("导出播放列表失败:", error);
-        showNotification("导出失败，请稍后重试", "error");
+        console.error("Exporting the playlist failed:", error);
+        showNotification("Export failed, please try again later", "error");
     }
 }
 
@@ -4512,7 +4512,7 @@ function renderPlaylist() {
             <button class="playlist-item-download" type="button" data-playlist-action="download" data-index="${index}" title="下载">
                 <i class="fas fa-download"></i>
             </button>
-            <button class="playlist-item-remove" type="button" data-playlist-action="remove" data-index="${index}" title="从播放列表移除">
+            <button class="playlist-item-remove" type="button" data-playlist-action="remove" data-index="${index}" title="Removed from the playlist">
                 <i class="fas fa-times"></i>
             </button>
         </div>`;
